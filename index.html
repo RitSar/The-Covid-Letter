@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>The Corona Letter</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="icon" href="images/husky.png">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <script>
+        $(function() {
+
+          $.getJSON('https://api.thevirustracker.com/free-api?global=stats',function(data){
+            var a = data.results[0].total_cases;
+            var b = data.results[0].total_recovered;
+            var c = data.results[0].total_deaths;
+            var d = data.results[0].total_new_cases_today;
+            var e = data.results[0].total_affected_countries;
+            var f = data.results[0].total_new_deaths_today;
+            $(".a").text(a);
+            $(".b").text(b);
+            $(".c").text(c);
+            $(".d").text(d);
+            $(".e").text(e);
+            $(".f").text(f);
+          });
+
+       $.getJSON('/jsonworld', function(data) {
+           $.each(data.response, function(i, f) {
+              var tblRow = "<tr>" + "<td>" + f.country + "</td>" +
+               "<td>" + f.cases.total + "</td>" + "<td>" + f.cases.new + "</td>" + "<td>" + f.cases.recovered + "</td>" + "<td>" + f.deaths.total + "</td>" +"</tr>"
+               $(tblRow).appendTo("#userdata tbody");
+         });
+
+       });
+
+       $.getJSON('/jsonindia', function(data) {
+           var x = data.total_values.confirmed;
+           var y = data.total_values.recovered;
+           var z = data.total_values.deaths;
+           $(".x").text(x);
+           $(".y").text(y);
+           $(".z").text(z);
+           $.each(data.state_wise, function(i, f) {
+              var tblRow = "<tr>" + "<td>" + f.state + "</td>" +
+               "<td>" + f.confirmed + "</td>" + "<td>" + f.active + "</td>" + "<td>" + f.recovered + "</td>" + "<td>" + f.deaths + "</td>" +"</tr>"
+               $(tblRow).appendTo("#indiadata tbody");
+         });
+
+       });
+
+
+       });
+
+
+    </script>
+    <link rel="stylesheet" href="/css/index.css">
+    <style>
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px black;
+  border-radius: 0;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #2196f3;
+}
+
+</style>
+  </head>
+  <body>
+    <div class="jumbotron">
+      <h1>The Corona Letter</h1>
+    </div>
+    <div class="image">
+      <img src="/images/map.jpg" width="100%" alt="">
+    </div>
+    <h3>COVID-19 GLOBAL STATISTICS</h3>
+    <div class="data row ">
+      <div class="col-4 text-warning">
+        <h3 class="a">N/A</h3>
+        <p>Total Cases</p>
+      </div>
+      <div class="col-4 text-success">
+        <h3 class="b">N/A</h3>
+        <p>Total Recovered</p>
+      </div>
+      <div class="col-4 text-danger">
+        <h3 class="c">N/A</h3>
+        <p>Total Deaths</p>
+      </div>
+    </div><div class="data row ">
+      <div class="col-4 text-warning">
+        <h3 class="d">N/A</h3>
+        <p>New Cases Today</p>
+      </div>
+      <div class="col-4 text-primary">
+        <h3 class="e">N/A</h3>
+        <p>Total Affected Countries</p>
+      </div>
+      <div class="col-4 text-danger">
+        <h3 class="f">N/A</h3>
+        <p>New Deaths Today</p>
+      </div>
+    </div>
+    <div class="table-responsive">
+       <table id= "userdata" class="table table-striped text-white">
+      <thead>
+                <th>Area</th>
+                <th>Total</th>
+                <th>New</th>
+                <th>Recovered</th>
+                <th>Deaths</th>
+            </thead>
+          <tbody>
+
+           </tbody>
+       </table>
+    </div>
+    <h3>COVID-19 INDIAN STATISTICS</h3>
+    <div class="data row ">
+      <div class="col-4 text-warning">
+        <h3 class="x">N/A</h3>
+        <p>Confirmed Cases</p>
+      </div>
+      <div class="col-4 text-success">
+        <h3 class="y">N/A</h3>
+        <p>Recovered</p>
+      </div>
+      <div class="col-4 text-danger">
+        <h3 class="z">N/A</h3>
+        <p>Deaths</p>
+      </div>
+    </div>
+    <div class="table-responsive">
+       <table id= "indiadata" class="table table-striped text-white">
+      <thead>
+                <th>State</th>
+                <th>Confirmed</th>
+                <th>Active</th>
+                <th>Recovered</th>
+                <th>Deaths</th>
+            </thead>
+          <tbody>
+
+           </tbody>
+       </table>
+
+    </div>
+
+    <div class="neon">
+      <form class="" action="/signup" method="get">
+        <a href="/signup">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          Subscribe to the Corona Letter
+        </a>
+      </form>
+    </div>
+<footer>&copy Rittik Sarkar</footer>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  </body>
+</html>
