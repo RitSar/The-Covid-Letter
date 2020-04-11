@@ -10,93 +10,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
     <script>
-        $(function() {
-
-          $.getJSON('https://api.thevirustracker.com/free-api?global=stats',function(data){
-            var a = data.results[0].total_cases;
-            var b = data.results[0].total_recovered;
-            var c = data.results[0].total_deaths;
-            var d = data.results[0].total_new_cases_today;
-            var e = data.results[0].total_affected_countries;
-            var f = data.results[0].total_new_deaths_today;
-            $(".a").text(a);
-            $(".b").text(b);
-            $(".c").text(c);
-            $(".d").text(d);
-            $(".e").text(e);
-            $(".f").text(f);
-          });
-
-       $.getJSON('/jsonworld', function(data) {
-           $.each(data.response, function(i, f) {
-              var tblRow = "<tr>" + "<td>" + f.country + "</td>" +
-               "<td>" + f.cases.total + "</td>" + "<td>" + f.cases.new + "</td>" + "<td>" + f.cases.recovered + "</td>" + "<td>" + f.deaths.total + "</td>" +"</tr>"
-               $(tblRow).appendTo("#userdata tbody");
-         });
-
-       });
-
-       $.getJSON('/jsonindia', function(data) {
-           var x = data.total_values.confirmed;
-           var y = data.total_values.recovered;
-           var z = data.total_values.deaths;
-           $(".x").text(x);
-           $(".y").text(y);
-           $(".z").text(z);
-           $.each(data.state_wise, function(i, f) {
-              var tblRow = "<tr class='here' id="+ f.statecode +">" + "<td >" + f.state + "</td>" +
-               "<td>" + f.confirmed + "</td>" + "<td>" + f.active + "</td>" + "<td>" + f.recovered + "</td>" + "<td>" + f.deaths + "</td>" +"</tr>"
-               $(tblRow).appendTo("#indiadata tbody");
-         });
-
-       });
-});
-$(document).ready(function(){
-  $(document).on("click",".here",function(event){
-    var a = this.id;
-    $(".slot").slideUp();
-    setTimeout(function(){
-      $('.contain').empty();
-      // $(".slot").text(a);
-      // $(".slot").slideDown();
-      $.getJSON('/jsonindia', function(data) {
-        $.each(data.state_wise, function(i, f) {
-          if(a == f.statecode){
-            $(".slotText").text(f.state);
-            $.each(f.district, function(ii,ff){
-              var toAdd = "<div class = 'col-4'>Area: "+ ii +"<p class='text-warning'>Cases: "+ ff.confirmed +"</p></div>"
-              $(toAdd).appendTo("#toAdd");
-            });
-          }
-        });
-      });
-      $(".slot").slideDown();
-    },1000);
-  });
-});
-
-
-
-
+    var jsonInd;$(function(){$.getJSON('https://api.thevirustracker.com/free-api?global=stats',function(data){var a=data.results[0].total_cases;var b=data.results[0].total_recovered;var c=data.results[0].total_deaths;var d=data.results[0].total_new_cases_today;var e=data.results[0].total_affected_countries;var f=data.results[0].total_new_deaths_today;$(".a").text(a);$(".b").text(b);$(".c").text(c);$(".d").text(d);$(".e").text(e);$(".f").text(f)});$.getJSON('/jsonworld',function(data){$.each(data.response,function(i,f){var tblRow="<tr>"+"<td>"+f.country+"</td>"+"<td>"+f.cases.total+"</td>"+"<td>"+f.cases.new+"</td>"+"<td>"+f.cases.recovered+"</td>"+"<td>"+f.deaths.total+"</td>"+"</tr>"
+$(tblRow).appendTo("#userdata tbody")})});$.getJSON('/jsonindia',function(data){jsonInd=data
+var x=data.total_values.confirmed;var y=data.total_values.recovered;var z=data.total_values.deaths;$(".x").text(x);$(".y").text(y);$(".z").text(z);$.each(data.state_wise,function(i,f){var tblRow="<tr class='here' id="+f.statecode+">"+"<td >"+f.state+"</td>"+"<td>"+f.confirmed+"</td>"+"<td>"+f.active+"</td>"+"<td>"+f.recovered+"</td>"+"<td>"+f.deaths+"</td>"+"</tr>"
+$(tblRow).appendTo("#indiadata tbody")})})});$(document).ready(function(){$(document).on("click",".here",function(event){var a=this.id;$(".slot").slideUp();setTimeout(function(){$('.contain').empty();$.each(jsonInd.state_wise,function(i,f){if(a==f.statecode){$(".slotText").text(f.state);$.each(f.district,function(ii,ff){var toAdd="<div class = 'col-4'>Area: "+ii+"<p class='text-warning'>Cases: "+ff.confirmed+"</p></div>"
+$(toAdd).appendTo("#toAdd")})}});$(".slot").slideDown()},1000)})})
     </script>
     <link rel="stylesheet" href="/css/index.css">
     <style>
-/* width */
-::-webkit-scrollbar {
-  width: 10px;
-}
-
-/* Track */
-::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 5px black;
-  border-radius: 0;
-}
-
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background: #2196f3;
-}
-
+::-webkit-scrollbar{width:10px;height:10px}::-webkit-scrollbar-track{box-shadow:inset 0 0 5px black;border-radius:0}::-webkit-scrollbar-thumb{background:#2196f3}
 </style>
   </head>
   <body>
@@ -180,10 +102,8 @@ $(document).ready(function(){
     <div class="slot">
       <h5 class="slotText text-white">Click on a state to get district information.</h5>
       <div id="toAdd" class="contain row">
-
       </div>
     </div>
-
     <div class="neon">
       <form class="" action="/signup" method="get">
         <a href="/signup">
@@ -196,8 +116,6 @@ $(document).ready(function(){
       </form>
     </div>
 <footer>&copy Rittik Sarkar</footer>
-
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-
   </body>
 </html>
