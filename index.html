@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <link rel="icon" href="images/husky.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
     <script>
         $(function() {
@@ -43,15 +44,38 @@
            $(".y").text(y);
            $(".z").text(z);
            $.each(data.state_wise, function(i, f) {
-              var tblRow = "<tr>" + "<td>" + f.state + "</td>" +
+              var tblRow = "<tr class='here' id="+ f.statecode +">" + "<td >" + f.state + "</td>" +
                "<td>" + f.confirmed + "</td>" + "<td>" + f.active + "</td>" + "<td>" + f.recovered + "</td>" + "<td>" + f.deaths + "</td>" +"</tr>"
                $(tblRow).appendTo("#indiadata tbody");
          });
 
        });
+});
+$(document).ready(function(){
+  $(document).on("click",".here",function(event){
+    var a = this.id;
+    $(".slot").slideUp();
+    setTimeout(function(){
+      $('.contain').empty();
+      // $(".slot").text(a);
+      // $(".slot").slideDown();
+      $.getJSON('/jsonindia', function(data) {
+        $.each(data.state_wise, function(i, f) {
+          if(a == f.statecode){
+            $(".slotText").text(f.state);
+            $.each(f.district, function(ii,ff){
+              var toAdd = "<div class = 'col-4'>Area: "+ ii +"<p class='text-warning'>Cases: "+ ff.confirmed +"</p></div>"
+              $(toAdd).appendTo("#toAdd");
+            });
+          }
+        });
+      });
+      $(".slot").slideDown();
+    },500);
+  });
+});
 
 
-       });
 
 
     </script>
@@ -111,7 +135,7 @@
       </div>
     </div>
     <div class="table-responsive">
-       <table id= "userdata" class="table table-striped text-white">
+       <table id= "userdata" class="table table-sm table-striped text-white">
       <thead>
                 <th>Area</th>
                 <th>Total</th>
@@ -140,7 +164,7 @@
       </div>
     </div>
     <div class="table-responsive">
-       <table id= "indiadata" class="table table-striped text-white">
+       <table id= "indiadata" class="table table-sm table-striped text-white">
       <thead>
                 <th>State</th>
                 <th>Confirmed</th>
@@ -152,7 +176,12 @@
 
            </tbody>
        </table>
+    </div>
+    <div class="slot">
+      <h5 class="slotText text-white">Click on a state to get district information.</h5>
+      <div id="toAdd" class="contain row">
 
+      </div>
     </div>
 
     <div class="neon">
@@ -169,5 +198,6 @@
 <footer>&copy Rittik Sarkar</footer>
 
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
   </body>
 </html>

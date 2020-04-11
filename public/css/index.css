@@ -12,6 +12,7 @@ body{
   color: inherit;
   text-align: center;
   font-family: 'Pacifico', cursive;
+  height: 12vh;
 }
 .data{
   margin: 2vh 0 3vh 0;
@@ -24,10 +25,7 @@ h3{
 .neon{
   text-align: center;
 }
-/* .table{
-  text-align: center;
 
-} */
 .table-responsive{
   padding: 2vh;
   max-height: 50vh;
@@ -36,15 +34,21 @@ h3{
 thead{
   background-color: white;
   color: black;
-  font-size: 2vh;
 }
 
 .table-striped>tbody>tr:nth-child(odd)>td,
 .table-striped>tbody>tr:nth-child(odd)>th {
    background-color: #2196f3;
  }
+ .slot{
+   text-align: center;
+   background-color: #323232;
+   color: white;
+   padding: 1vh 0;
+   margin: 20px 2vh;
+ }
 a{
-  margin: 10vh;
+  margin: 10vh 0;
   position: relative;
   display: inline-block;
   padding: 15px 30px;
@@ -115,4 +119,9 @@ a:hover span:nth-child(4){
 }
 footer{
   text-align: center;
+}
+@media only screen and (max-width: 992px) {
+  .table-responsive{
+    padding: 1vh;
+  }
 }
