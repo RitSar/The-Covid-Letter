@@ -10,21 +10,30 @@
   <link rel="icon" href="images/husky.png">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400&display=swap" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js" charset="utf-8"></script>
   <script>
   var jsonInd;
-  $(function(){$.getJSON("/jsonworld",function(a){var d=0;$.each(a.countries_stat,function(a,c){$("<tr><td>"+c.country_name+"</td><td>"+c.cases+"</td><td>"+c.total_recovered+"</td><td>"+c.deaths+"</td></tr>").appendTo("#userdata tbody");d++});$(".a").text(a.world_total.total_cases);$(".b").text(a.world_total.total_recovered);$(".c").text(a.world_total.total_deaths);$(".d").text(a.world_total.new_cases);$(".e").text(d-3);$(".f").text(a.world_total.new_deaths)});$.getJSON("/jsonindia",function(a){jsonInd=a;
-  var d=a.total_values.confirmed,g=a.total_values.recovered,c=a.total_values.deaths;$(".x").text(d);$(".y").text(g);$(".z").text(c);$.each(a.state_wise,function(a,c){$("<tr class='here' id="+c.statecode+"><td >"+c.state+"</td><td>"+c.confirmed+"</td><td>"+c.recovered+"</td><td>"+c.deaths+"</td></tr>").appendTo("#indiadata tbody")})})});
-  $(document).ready(function(){$(document).on("click",".here",function(a){var c=this.id;$(".slot").slideUp();setTimeout(function(){$(".contain").empty();$.each(jsonInd.state_wise,function(a,b){c==b.statecode&&($(".slotText").text(b.state),$.each(b.district,function(a,c){$("<div class = 'col-4'>Area: "+a+"<p class='text-warning'>Cases: "+c.confirmed+"</p></div>").appendTo("#toAdd")}))});$(".slot").slideDown()},500)});var a=[],d=[],g=[],c=[],h=[],n=[],p=[],q=[],k,l,m;$.getJSON("https://covidapi.info/api/v1/global/count",
-  function(b){var f=0;$.each(b.result,function(b,e){0<f&&(n.push(e.confirmed-k),p.push(e.deaths-l),q.push(e.recovered-m),h.push(b.substring(5)));a.push(b.substring(5));k=e.confirmed;d.push(k);l=e.deaths;g.push(l);m=e.recovered;c.push(m);f++})});$(".charts").hide();var f=0;$(".visuals").on("click",function(){if(0==f){$(".charts").show();f=1;Chart.defaults.global.defaultFontColor="white";var b=document.getElementById("myCaseChart").getContext("2d");new Chart(b,{type:"line",data:{labels:a,datasets:[{label:"Number of Cases",
-  data:d,backgroundColor:"rgba(240, 173, 78,0.5)",borderColor:"rgba(240, 173, 78,1)",borderWidth:1,borderDash:[5,5]}]},options:{responsive:!0,maintainAspectRatio:!1,scales:{yAxes:[{ticks:{beginAtZero:!0}}]}}});b=document.getElementById("myDeathChart").getContext("2d");new Chart(b,{type:"line",data:{labels:a,datasets:[{label:"Number of Deaths",data:g,backgroundColor:"rgba(217, 83, 79, 0.5)",borderColor:"rgba(217, 83, 79,1)",borderWidth:1,borderDash:[5,5]}]},options:{responsive:!0,maintainAspectRatio:!1,
-  scales:{yAxes:[{ticks:{beginAtZero:!0}}]}}});b=document.getElementById("myRecoverChart").getContext("2d");new Chart(b,{type:"line",data:{labels:a,datasets:[{label:"Number of Recoveries",data:c,backgroundColor:"rgba(92, 184, 92,0.5)",borderColor:"rgba(92, 184, 92,1)",borderWidth:1,borderDash:[5,5]}]},options:{responsive:!0,maintainAspectRatio:!1,scales:{yAxes:[{ticks:{beginAtZero:!0}}]}}});b=document.getElementById("myNewCaseChart").getContext("2d");new Chart(b,{type:"bar",data:{labels:h,datasets:[{label:"Number of New Cases per day",
-  data:n,backgroundColor:"rgba(240, 173, 78,0.5)",borderColor:"rgba(240, 173, 78,1)",borderWidth:1,borderDash:[5,5]}]},options:{responsive:!0,maintainAspectRatio:!1,scales:{yAxes:[{ticks:{beginAtZero:!0}}]}}});b=document.getElementById("myNewDeathChart").getContext("2d");new Chart(b,{type:"bar",data:{labels:h,datasets:[{label:"Number of New Deaths per day",data:p,backgroundColor:"rgba(217, 83, 79,0.5)",borderColor:"rgba(217, 83, 79,1)",borderWidth:1,borderDash:[5,5]}]},options:{responsive:!0,maintainAspectRatio:!1,
-  scales:{yAxes:[{ticks:{beginAtZero:!0}}]}}});b=document.getElementById("myNewRecoverChart").getContext("2d");new Chart(b,{type:"bar",data:{labels:h,datasets:[{label:"Number of New Recoveries per day",data:q,backgroundColor:"rgba(92, 184, 92,0.5)",borderColor:"rgba(92, 184, 92,1)",borderWidth:1,borderDash:[5,5]}]},options:{responsive:!0,maintainAspectRatio:!1,scales:{yAxes:[{ticks:{beginAtZero:!0}}]}}})}else f=0,$(".charts").hide()})});
+  $(function(){$.getJSON("/jsonworld",function(b){var e=0;$.each(b.countries_stat,function(b,d){$("<tr><td>"+d.country_name+"</td><td>"+d.cases+"</td><td>"+d.total_recovered+"</td><td>"+d.deaths+"</td></tr>").appendTo("#userdata tbody");e++});$(".a").text(b.world_total.total_cases);$(".b").text(b.world_total.total_recovered);$(".c").text(b.world_total.total_deaths);$(".d").text(b.world_total.new_cases);$(".e").text(e-3);$(".f").text(b.world_total.new_deaths)});$.getJSON("/jsonindia",function(b){jsonInd=b;
+  var e=b.total_values.confirmed,f=b.total_values.recovered,d=b.total_values.deaths;$(".x").text(e);$(".y").text(f);$(".z").text(d);$.each(b.state_wise,function(b,d){$("<tr class='here' id="+d.statecode+"><td >"+d.state+"</td><td>"+d.confirmed+"</td><td>"+d.recovered+"</td><td>"+d.deaths+"</td></tr>").appendTo("#indiadata tbody")})})});
+  $(document).ready(function(){$(document).on("click",".here",function(a){var b=this.id;$(".slot").slideUp();setTimeout(function(){$(".contain").empty();$.each(jsonInd.state_wise,function(a,c){b==c.statecode&&($(".slotText").text(c.state),$.each(c.district,function(a,b){$("<div class = 'col-4'>Area: "+a+"<p class='text-warning'>Cases: "+b.confirmed+"</p></div>").appendTo("#toAdd")}))});$(".slot").slideDown()},500)});var b=[],e=[],f=[],d=[],g=[],w=[],y=[],z=[],k,l,m;$.getJSON("https://covidapi.info/api/v1/global/count",
+  function(a){var x=0;$.each(a.result,function(a,c){0<x&&(w.push(c.confirmed-k),y.push(c.deaths-l),z.push(c.recovered-m),g.push(a.substring(5)));b.push(a.substring(5));k=c.confirmed;e.push(k);l=c.deaths;f.push(l);m=c.recovered;d.push(m);x++})});$(".charts").hide();var n=0;$(".visuals").on("click",function(){if(0==n){$(".charts").show();n=1;Chart.defaults.global.defaultFontColor="white";var a=document.getElementById("myCaseChart").getContext("2d");new Chart(a,{type:"line",data:{labels:b,datasets:[{label:"Number of Cases",
+  data:e,backgroundColor:"rgba(240, 173, 78,0.5)",borderColor:"rgba(240, 173, 78,1)",borderWidth:1,borderDash:[5,5]}]},options:{responsive:!0,maintainAspectRatio:!1,scales:{yAxes:[{ticks:{beginAtZero:!0}}]}}});a=document.getElementById("myDeathChart").getContext("2d");new Chart(a,{type:"line",data:{labels:b,datasets:[{label:"Number of Deaths",data:f,backgroundColor:"rgba(217, 83, 79, 0.5)",borderColor:"rgba(217, 83, 79,1)",borderWidth:1,borderDash:[5,5]}]},options:{responsive:!0,maintainAspectRatio:!1,
+  scales:{yAxes:[{ticks:{beginAtZero:!0}}]}}});a=document.getElementById("myRecoverChart").getContext("2d");new Chart(a,{type:"line",data:{labels:b,datasets:[{label:"Number of Recoveries",data:d,backgroundColor:"rgba(92, 184, 92,0.5)",borderColor:"rgba(92, 184, 92,1)",borderWidth:1,borderDash:[5,5]}]},options:{responsive:!0,maintainAspectRatio:!1,scales:{yAxes:[{ticks:{beginAtZero:!0}}]}}});a=document.getElementById("myNewCaseChart").getContext("2d");new Chart(a,{type:"bar",data:{labels:g,datasets:[{label:"Number of New Cases per day",
+  data:w,backgroundColor:"rgba(240, 173, 78,0.5)",borderColor:"rgba(240, 173, 78,1)",borderWidth:1,borderDash:[5,5]}]},options:{responsive:!0,maintainAspectRatio:!1,scales:{yAxes:[{ticks:{beginAtZero:!0}}]}}});a=document.getElementById("myNewDeathChart").getContext("2d");new Chart(a,{type:"bar",data:{labels:g,datasets:[{label:"Number of New Deaths per day",data:y,backgroundColor:"rgba(217, 83, 79,0.5)",borderColor:"rgba(217, 83, 79,1)",borderWidth:1,borderDash:[5,5]}]},options:{responsive:!0,maintainAspectRatio:!1,
+  scales:{yAxes:[{ticks:{beginAtZero:!0}}]}}});a=document.getElementById("myNewRecoverChart").getContext("2d");new Chart(a,{type:"bar",data:{labels:g,datasets:[{label:"Number of New Recoveries per day",data:z,backgroundColor:"rgba(92, 184, 92,0.5)",borderColor:"rgba(92, 184, 92,1)",borderWidth:1,borderDash:[5,5]}]},options:{responsive:!0,maintainAspectRatio:!1,scales:{yAxes:[{ticks:{beginAtZero:!0}}]}}})}else n=0,$(".charts").hide()});var A=[],B=[],C=[],D=[],E=[],p=[],q=[],h=[],r,t,u;$.getJSON("https://covidapi.info/api/v1/country/IND",
+  function(a){var b=0;$.each(a.result,function(a,c){0<b&&(D.push(c.confirmed-r),E.push(c.deaths-t),p.push(c.recovered-u),q.push(a.substring(5)));h.push(a.substring(5));r=c.confirmed;t=c.deaths;u=c.recovered;b++;A.push(r);B.push(t);C.push(u)})});$(".chartsIndia").hide();var v=0;$(".visualsIndia").on("click",function(){if(0==v){$(".chartsIndia").show();v=1;Chart.defaults.global.defaultFontColor="white";var a=document.getElementById("indiaCaseChart").getContext("2d");new Chart(a,{type:"line",data:{labels:h,
+  datasets:[{label:"Number of Cases",data:A,backgroundColor:"rgba(240, 173, 78,0.5)",borderColor:"rgba(240, 173, 78,1)",borderWidth:1,borderDash:[5,5]}]},options:{responsive:!0,maintainAspectRatio:!1,scales:{yAxes:[{ticks:{beginAtZero:!0}}]}}});a=document.getElementById("indiaDeathChart").getContext("2d");new Chart(a,{type:"line",data:{labels:h,datasets:[{label:"Number of Deaths",data:C,backgroundColor:"rgba(217, 83, 79, 0.5)",borderColor:"rgba(217, 83, 79,1)",borderWidth:1,borderDash:[5,5]}]},options:{responsive:!0,
+  maintainAspectRatio:!1,scales:{yAxes:[{ticks:{beginAtZero:!0}}]}}});a=document.getElementById("indiaRecoverChart").getContext("2d");new Chart(a,{type:"line",data:{labels:h,datasets:[{label:"Number of Recoveries",data:B,backgroundColor:"rgba(92, 184, 92,0.5)",borderColor:"rgba(92, 184, 92,1)",borderWidth:1,borderDash:[5,5]}]},options:{responsive:!0,maintainAspectRatio:!1,scales:{yAxes:[{ticks:{beginAtZero:!0}}]}}});a=document.getElementById("indiaNewCaseChart").getContext("2d");new Chart(a,{type:"bar",
+  data:{labels:q,datasets:[{label:"Number of New Cases per day",data:D,backgroundColor:"rgba(240, 173, 78,0.5)",borderColor:"rgba(240, 173, 78,1)",borderWidth:1,borderDash:[5,5]}]},options:{responsive:!0,maintainAspectRatio:!1,scales:{yAxes:[{ticks:{beginAtZero:!0}}]}}});a=document.getElementById("indiaNewDeathChart").getContext("2d");new Chart(a,{type:"bar",data:{labels:q,datasets:[{label:"Number of New Deaths per day",data:p,backgroundColor:"rgba(217, 83, 79,0.5)",borderColor:"rgba(217, 83, 79,1)",
+  borderWidth:1,borderDash:[5,5]}]},options:{responsive:!0,maintainAspectRatio:!1,scales:{yAxes:[{ticks:{beginAtZero:!0}}]}}});a=document.getElementById("indiaNewRecoverChart").getContext("2d");new Chart(a,{type:"bar",data:{labels:p,datasets:[{label:"Number of New Recoveries per day",data:E,backgroundColor:"rgba(92, 184, 92,0.5)",borderColor:"rgba(92, 184, 92,1)",borderWidth:1,borderDash:[5,5]}]},options:{responsive:!0,maintainAspectRatio:!1,scales:{yAxes:[{ticks:{beginAtZero:!0}}]}}})}else v=0,$(".chartsIndia").hide()})});
+
   </script>
   <link rel="stylesheet" href="/css/index.css">
   <style>
-::-webkit-scrollbar{width:10px;height:10px}::-webkit-scrollbar-track{box-shadow:inset 0 0 5px black;border-radius:0}::-webkit-scrollbar-thumb{background:#2196f3}
+    ::-webkit-scrollbar {width: 10px;height: 10px}
+    ::-webkit-scrollbar-track {box-shadow: inset 0 0 5px black;border-radius: 0}
+    ::-webkit-scrollbar-thumb {background: #2196f3;}
   </style>
 </head>
 
@@ -112,6 +121,28 @@
       <p>Deaths</p>
     </div>
   </div>
+  <div class="visualButton">
+    <button class="visualsIndia btn btn-dark" type="button" name="button">Toggle Visuals</button>
+  </div>  <div id="chartsIndia" class="row chartsIndia">
+      <div class="col-lg-6">
+        <canvas id="indiaCaseChart"></canvas>
+      </div>
+      <div class="col-lg-6">
+        <canvas id="indiaNewCaseChart"></canvas>
+      </div>
+      <div class="col-lg-6">
+        <canvas id="indiaDeathChart"></canvas>
+      </div>
+      <div class="col-lg-6">
+        <canvas id="indiaNewDeathChart"></canvas>
+      </div>
+      <div class="col-lg-6">
+        <canvas id="indiaRecoverChart"></canvas>
+      </div>
+      <div class="col-lg-6">
+        <canvas id="indiaNewRecoverChart"></canvas>
+      </div>
+    </div>
   <div class="table-responsive">
     <table id="indiadata" class="table table-sm table-striped text-white">
       <thead>
