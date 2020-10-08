@@ -2,176 +2,169 @@
 
 <html lang="en" dir="ltr">
 
-<head>
-  <meta charset="utf-8">
-  <title>The Corona Letter</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <link rel="icon" href="images/husky.png">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@500&display=swap" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js" charset="utf-8"></script>
-  <script src="/js/index.js" charset="utf-8"></script>
-  <link rel="stylesheet" href="/css/index.css">
-  <style>
-    ::-webkit-scrollbar {
-      width: 10px;
-      height: 10px
-    }
+  <head>
+    <meta charset="utf-8">
+    <title>The Covid Letter</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="icon" href="images/husky.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@500&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js" charset="utf-8"></script>
+    <script src="/js/index.js" charset="utf-8"></script>
+    <link rel="stylesheet" href="/css/index.css">
+    <style>
+      ::-webkit-scrollbar {
+        width: 10px;
+        height: 10px;
+      }
+      ::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 5px black;
+        border-radius: 0;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #2196f3;
+      }
+    </style>
+  </head>
 
-    ::-webkit-scrollbar-track {
-      box-shadow: inset 0 0 5px black;
-      border-radius: 0
-    }
-
-    ::-webkit-scrollbar-thumb {
-      background: #2196f3;
-    }
-  </style>
-</head>
-
-<body>
-  <div class="jumbotron">
-    <h1>The Corona Letter</h1>
-    <p>(Statistics last updated: <span class="currentTime">time gmt+</span>)</p>
-  </div>
-  <div class="data row ">
-    <div class="col-4 text-warning">
-      <h3 class="a">N/A</h3>
-      <p>Cases</p>
+  <body>
+    <div class="jumbotron">
+      <h1>The Covid Letter</h1>
+      <p>(Statistics last updated:
+        <span class="currentTime">time gmt+</span>)</p>
     </div>
-    <div class="col-4 text-success">
-      <h3 class="b">N/A</h3>
-      <p>Recovered</p>
+    <div class="data row ">
+      <div class="col-4 text-warning">
+        <h3 class="a">N/A</h3>
+        <p>Cases</p>
+      </div>
+      <div class="col-4 text-success">
+        <h3 class="b">N/A</h3>
+        <p>Recovered</p>
+      </div>
+      <div class="col-4 text-danger">
+        <h3 class="c">N/A</h3>
+        <p>Deaths</p>
+      </div>
     </div>
-    <div class="col-4 text-danger">
-      <h3 class="c">N/A</h3>
-      <p>Deaths</p>
+    <div class="data row ">
+      <div class="col-4 text-warning">
+        <h3 class="d">N/A</h3>
+        <p>New Cases</p>
+      </div>
+      <div class="col-4 text-primary">
+        <h3 class="e">N/A</h3>
+        <p>Affected Countries</p>
+      </div>
+      <div class="col-4 text-danger">
+        <h3 class="f">N/A</h3>
+        <p>New Deaths</p>
+      </div>
     </div>
-  </div>
-  <div class="data row ">
-    <div class="col-4 text-warning">
-      <h3 class="d">N/A</h3>
-      <p>New Cases</p>
+    <div class="visualButton">
+      <button class="visuals btn btn-dark" type="button" name="button">Toggle Visuals</button>
     </div>
-    <div class="col-4 text-primary">
-      <h3 class="e">N/A</h3>
-      <p>Affected Countries</p>
+    <div id="charts" class="row charts">
+      <div class="col-lg-6">
+        <canvas id="myCaseChart"></canvas>
+      </div>
+      <div class="col-lg-6">
+        <canvas id="myNewCaseChart"></canvas>
+      </div>
+      <div class="col-lg-6">
+        <canvas id="myDeathChart"></canvas>
+      </div>
+      <div class="col-lg-6">
+        <canvas id="myNewDeathChart"></canvas>
+      </div>
+      <div class="col-lg-6">
+        <canvas id="myRecoverChart"></canvas>
+      </div>
+      <div class="col-lg-6">
+        <canvas id="myNewRecoverChart"></canvas>
+      </div>
     </div>
-    <div class="col-4 text-danger">
-      <h3 class="f">N/A</h3>
-      <p>New Deaths</p>
+    <div class="table-responsive">
+      <table id="userdata" class="table table-sm table-striped text-white">
+        <thead>
+          <th style="width: 40%">Country</th>
+          <th style="width: 20%">Total</th>
+          <th style="width: 20%">Recovered</th>
+          <th style="width: 20%">Deaths</th>
+        </thead>
+        <tbody></tbody>
+      </table>
     </div>
-  </div>
-  <div class="visualButton">
-    <button class="visuals btn btn-dark" type="button" name="button">Toggle Visuals</button>
-  </div>
-  <div id="charts" class="row charts">
-    <div class="col-lg-6">
-      <canvas id="myCaseChart"></canvas>
+    <h3>COVID-19 INDIAN STATISTICS</h3>
+    <div class="data row ">
+      <div class="col-4 text-warning">
+        <h3 class="x">N/A</h3>
+        <p>Confirmed Cases</p>
+      </div>
+      <div class="col-4 text-success">
+        <h3 class="y">N/A</h3>
+        <p>Recovered</p>
+      </div>
+      <div class="col-4 text-danger">
+        <h3 class="z">N/A</h3>
+        <p>Deaths</p>
+      </div>
     </div>
-    <div class="col-lg-6">
-      <canvas id="myNewCaseChart"></canvas>
+    <div class="visualButton">
+      <button class="visualsIndia btn btn-dark" type="button" name="button">Toggle Visuals</button>
     </div>
-    <div class="col-lg-6">
-      <canvas id="myDeathChart"></canvas>
+    <div id="chartsIndia" class="row chartsIndia">
+      <div class="col-lg-6">
+        <canvas id="indiaCaseChart"></canvas>
+      </div>
+      <div class="col-lg-6">
+        <canvas id="indiaNewCaseChart"></canvas>
+      </div>
+      <div class="col-lg-6">
+        <canvas id="indiaDeathChart"></canvas>
+      </div>
+      <div class="col-lg-6">
+        <canvas id="indiaNewDeathChart"></canvas>
+      </div>
+      <div class="col-lg-6">
+        <canvas id="indiaRecoverChart"></canvas>
+      </div>
+      <div class="col-lg-6">
+        <canvas id="indiaNewRecoverChart"></canvas>
+      </div>
     </div>
-    <div class="col-lg-6">
-      <canvas id="myNewDeathChart"></canvas>
+    <div class="table-responsive">
+      <table id="indiadata" class="table table-sm table-striped text-white">
+        <thead>
+          <th style="width: 40%">State</th>
+          <th style="width: 20%">Confirmed</th>
+          <th style="width: 20%">Recovered</th>
+          <th style="width: 20%">Deaths</th>
+        </thead>
+        <tbody></tbody>
+      </table>
     </div>
-    <div class="col-lg-6">
-      <canvas id="myRecoverChart"></canvas>
+    <div class="slot">
+      <h5 class="slotText text-white">Click on a state to get district data</h5>
+      <div id="toAdd" class="contain row"></div>
     </div>
-    <div class="col-lg-6">
-      <canvas id="myNewRecoverChart"></canvas>
+    <div class="neon">
+      <form class="" action="/signup" method="get">
+        <a href="/signup">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          Subscribe to the Corona Letter
+        </a>
+      </form>
     </div>
-  </div>
-  <div class="table-responsive">
-    <table id="userdata" class="table table-sm table-striped text-white">
-      <thead>
-        <th style="width: 40%">Country</th>
-        <th style="width: 20%">Total</th>
-        <th style="width: 20%">Recovered</th>
-        <th style="width: 20%">Deaths</th>
-      </thead>
-      <tbody>
-
-      </tbody>
-    </table>
-  </div>
-  <h3>COVID-19 INDIAN STATISTICS</h3>
-  <div class="data row ">
-    <div class="col-4 text-warning">
-      <h3 class="x">N/A</h3>
-      <p>Confirmed Cases</p>
-    </div>
-    <div class="col-4 text-success">
-      <h3 class="y">N/A</h3>
-      <p>Recovered</p>
-    </div>
-    <div class="col-4 text-danger">
-      <h3 class="z">N/A</h3>
-      <p>Deaths</p>
-    </div>
-  </div>
-  <div class="visualButton">
-    <button class="visualsIndia btn btn-dark" type="button" name="button">Toggle Visuals</button>
-  </div>
-  <div id="chartsIndia" class="row chartsIndia">
-    <div class="col-lg-6">
-      <canvas id="indiaCaseChart"></canvas>
-    </div>
-    <div class="col-lg-6">
-      <canvas id="indiaNewCaseChart"></canvas>
-    </div>
-    <div class="col-lg-6">
-      <canvas id="indiaDeathChart"></canvas>
-    </div>
-    <div class="col-lg-6">
-      <canvas id="indiaNewDeathChart"></canvas>
-    </div>
-    <div class="col-lg-6">
-      <canvas id="indiaRecoverChart"></canvas>
-    </div>
-    <div class="col-lg-6">
-      <canvas id="indiaNewRecoverChart"></canvas>
-    </div>
-  </div>
-  <div class="table-responsive">
-    <table id="indiadata" class="table table-sm table-striped text-white">
-      <thead>
-        <th style="width: 40%">State</th>
-        <th style="width: 20%">Confirmed</th>
-        <th style="width: 20%">Recovered</th>
-        <th style="width: 20%">Deaths</th>
-      </thead>
-      <tbody>
-
-      </tbody>
-    </table>
-  </div>
-  <div class="slot">
-    <h5 class="slotText text-white">Click on a state to get district data</h5>
-    <div id="toAdd" class="contain row">
-    </div>
-  </div>
-  <div class="neon">
-    <form class="" action="/signup" method="get">
-      <a href="/signup">
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        Subscribe to the Corona Letter
-      </a>
-    </form>
-  </div>
-  <footer>&copy Rittik Sarkar</footer>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-  <script>
-  </script>
-</body>
+    <footer>&copy Rittik Sarkar</footer>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script></script>
+  </body>
 
 </html>
